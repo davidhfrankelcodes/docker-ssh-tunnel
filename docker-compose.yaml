@@ -1,10 +1,12 @@
 services:
   ssh_tunnel:
-    build: .
+    image: davidhfrankelcodes/docker-ssh-tunnel:latest
+    # To build locallay, comment out the image above and uncomment `build .` 
+    # build: .
     # Rename this container if running multiple container instances of the image
-    container_name: ${CONTAINER_NAME:-"docker-ssh-tunnel"} 
-    network_mode: host
-    restart: always
+    container_name: ${CONTAINER_NAME:-docker-ssh-tunnel} 
+    network_mode: host # Don't change this!
+    restart: always # Up to you! You may also use `unless-stopped`
     volumes:
       - ~/.ssh:/root/.ssh # The container inherits this machine's ~/.ssh configs
     environment:
