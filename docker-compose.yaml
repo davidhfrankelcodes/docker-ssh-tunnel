@@ -1,0 +1,15 @@
+services:
+  ssh_tunnel:
+    build: .
+    # Rename this container if running multiple container instances of the image
+    container_name: ${CONTAINER_NAME:-"docker-ssh-tunnel"} 
+    network_mode: host
+    restart: always
+    volumes:
+      - ~/.ssh:/root/.ssh # The container inherits this machine's ~/.ssh configs
+    environment:
+      - LOCAL_PORT
+      - REMOTE_USER
+      - REMOTE_PORT
+      - REMOTE_SERVER
+      - TUNNEL_TYPE
