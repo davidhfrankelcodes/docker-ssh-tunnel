@@ -59,7 +59,7 @@ For development or customization purposes, you can build the image locally:
    cd docker-ssh-tunnel
    ```
 
-2. Modify the `docker compose.yaml` file:
+2. Modify the `docker-compose.yaml` file:
    - Comment out the `image:` line
    - Uncomment the `build: .` line
 
