@@ -27,19 +27,19 @@ This project sets up an SSH tunnel using Docker and autossh. It allows you to cr
 
 4. Start the Docker container:
    ```
-   docker-compose up -d
+   docker compose up -d
    ```
 
 ## Usage
 
 1. To stop the tunnel:
    ```
-   docker-compose down
+   docker compose down
    ```
 
 2. To view logs:
    ```
-   docker-compose logs -f
+   docker compose logs -f
    ```
 
 ## Tunnel Types
@@ -59,13 +59,13 @@ For development or customization purposes, you can build the image locally:
    cd docker-ssh-tunnel
    ```
 
-2. Modify the `docker-compose.yaml` file:
+2. Modify the `docker compose.yaml` file:
    - Comment out the `image:` line
    - Uncomment the `build: .` line
 
 3. Build and start the container:
    ```
-   docker-compose up -d --build
+   docker compose up -d --build
    ```
 
 ### Customization
