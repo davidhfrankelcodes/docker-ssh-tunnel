@@ -23,7 +23,7 @@ This project sets up an SSH tunnel using Docker and autossh. It allows you to cr
    - `REMOTE_PORT`: The port on the remote server
    - `TUNNEL_TYPE`: Set to `L` for local tunnel or `R` for remote tunnel
 
-3. Ensure your SSH key is in the `~/.ssh` directory on your local machine.
+3. Ensure your SSH key is in the `~/.ssh` directory on your local machine or wherever you want to mount a new `.ssh` directory.
 
 4. Start the Docker container:
    ```
