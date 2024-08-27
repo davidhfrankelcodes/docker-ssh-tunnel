@@ -76,6 +76,16 @@ For development or customization purposes, you can build the image locally:
 ## Troubleshooting
 
 - Ensure SSH key permissions are correct and the key is set up on the remote server.
+- Ensure SSH config on remote server is set up correctly.
+  ```shell
+  # Make a copy of your config file
+  sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+  # Fix any issues.
+  sudo sed -i 's/#AllowAgentForwarding yes/AllowAgentForwarding yes/' /etc/ssh/sshd_config
+  sudo sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding yes/' /etc/ssh/sshd_config
+  sudo sed -i 's/#GatewayPorts no/GatewayPorts yes/' /etc/ssh/sshd_config
+  sudo sed -i 's/#PermitTunnel no/PermitTunnel yes/' /etc/ssh/sshd_config
+  ```
 - Verify specified ports are open and not in use by other services.
 - Check Docker logs for error messages or connection issues.
 
