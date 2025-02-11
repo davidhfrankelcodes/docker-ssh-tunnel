@@ -1,3 +1,5 @@
 .env
 notes.txt
 logs/
+*.override.yaml
+*.override.yml
