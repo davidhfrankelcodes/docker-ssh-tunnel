@@ -42,6 +42,19 @@ This project sets up an SSH tunnel using Docker and autossh. It allows you to cr
    docker compose logs -f
    ```
 
+## Health Check and Auto-Restart
+
+The container watches its own tunnel. Every `HEALTHCHECK_INTERVAL` seconds it tries a TCP connection to the tunnel's port:
+
+- `R` tunnels: `REMOTE_SERVER:REMOTE_PORT` (requires `GatewayPorts yes` on the server and the port reachable from this machine)
+- `L` tunnels: `localhost:LOCAL_PORT`
+
+After `HEALTHCHECK_RETRIES` consecutive failures, or if autossh exits, the container exits and the `restart: always` policy starts a fresh one. No sidecar or cron job is needed.
+
+Override the target with `HEALTHCHECK_HOST` / `HEALTHCHECK_PORT`, or set `HEALTHCHECK_ENABLED=false` to turn it off. All settings are listed in `.env.template`.
+
+`docker ps` also shows the health status (`healthy` / `unhealthy`) from the image's `HEALTHCHECK`.
+
 ## Tunnel Types
 
 - Local Tunnel (`L`): Forwards a port from the remote server to your local machine.
@@ -71,6 +84,7 @@ For development or customization purposes, you can build the image locally:
 ### Customization
 
 - Modify `start-autossh.sh` to add additional SSH options or change autossh behavior.
+- Modify `healthcheck.sh` to change how tunnel health is checked.
 - Extend the `Dockerfile` to include additional tools or configurations.
 
 ## Troubleshooting

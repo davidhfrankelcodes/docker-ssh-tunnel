@@ -15,3 +15,11 @@ services:
       - REMOTE_PORT
       - REMOTE_SERVER
       - TUNNEL_TYPE
+      # Optional watchdog settings (see README)
+      - HEALTHCHECK_ENABLED
+      - HEALTHCHECK_HOST
+      - HEALTHCHECK_PORT
+      - HEALTHCHECK_INTERVAL
+      - HEALTHCHECK_RETRIES
+      - HEALTHCHECK_START_PERIOD
+      - HEALTHCHECK_TIMEOUT
