@@ -81,6 +81,17 @@ For development or customization purposes, you can build the image locally:
    docker compose up -d --build
    ```
 
+### Publishing the Image
+
+`publish.sh` builds the image for `amd64` and `arm64` and pushes it to Docker Hub as `latest` plus a timestamp tag. It only publishes committed code and requires `docker login` first.
+
+```
+docker login
+./publish.sh
+```
+
+Set `IMAGE` to push somewhere else, e.g. `IMAGE=youruser/docker-ssh-tunnel ./publish.sh`.
+
 ### Customization
 
 - Modify `start-autossh.sh` to add additional SSH options or change autossh behavior.
